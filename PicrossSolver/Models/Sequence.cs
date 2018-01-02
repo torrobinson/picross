@@ -7,5 +7,10 @@ namespace PicrossSolver.Models
     public class Sequence
     {
         public int Count { get; set; }
+
+        public Sequence(int count)
+        {
+            this.Count = count;
+        }
     }
 }

@@ -31,12 +31,7 @@ namespace PicrossSolver.Helpers
             }
 
             // Say it has a sequence of 6 in it
-            segment.MustHaves.Add(
-                new Sequence()
-                {
-                    Count = 3
-                }
-            );
+            segment.MustHaves.Add(new Sequence(3));
 
             // Say we have a known at index 08
             segment.Cells[5].MarkTrue();

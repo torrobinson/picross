@@ -18,7 +18,7 @@ namespace PicrossSolver.Helpers
             {
                 if (!cell.IsTrue && lastWasTrue)
                 {
-                    mustHaves.Add(new Sequence(){Count = currentSequenceCount});
+                    mustHaves.Add(new Sequence(currentSequenceCount));
                     currentSequenceCount = 0;
                 }
 
@@ -32,13 +32,13 @@ namespace PicrossSolver.Helpers
 
             if (lastWasTrue)
             {
-                currentSequenceCount++;
-                mustHaves.Add(new Sequence() { Count = currentSequenceCount });
+                mustHaves.Add(new Sequence(currentSequenceCount));
             }
 
+            // If there was nothing for this segment, then give it a single empty musthave
             if (mustHaves.Count == 0)
             {
-                mustHaves.Add(new Sequence() { Count = 0 });
+                mustHaves.Add(new Sequence(0));
             }
 
             return mustHaves;
