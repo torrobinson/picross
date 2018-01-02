@@ -31,9 +31,10 @@ namespace PicrossSolver.Solves
                 int overlapFromMiddle = theSequence.Count - emptySegment.Length / 2;
                 if (overlapFromMiddle > 0)
                 {
+                    // And if it's even, we can work OUTWARDS from the "middle" area
                     int middleIndex = emptySegment.Length / 2;
 
-                    for (int i = 0 ; i < overlapFromMiddle; i++)
+                    for (int i = 0; i < overlapFromMiddle; i++)
                     {
                         // Going up
                         if (emptySegment.Cells[middleIndex - i].MarkTrue()
@@ -41,7 +42,7 @@ namespace PicrossSolver.Solves
                             cellsChanged = true;
 
                         // Going down
-                        if (emptySegment.Cells[middleIndex - 1 + i].MarkTrue()
+                        if (emptySegment.Cells[middleIndex - (emptySegment.Length % 2 == 0 ? -1 : 0) + i].MarkTrue()
                             && !cellsChanged)
                             cellsChanged = true;
                     }

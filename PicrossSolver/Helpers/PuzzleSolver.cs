@@ -10,13 +10,12 @@ namespace PicrossSolver.Helpers
     public class PuzzleSolver
     {
         private int unproductiveAttemptNumber = 0;
-        private const int failsUntilGiveUp = 100;
+        private const int failsUntilGiveUp = 50;
 
         public void SolvePuzzle(Puzzle puzzle)
         {
             while (unproductiveAttemptNumber < failsUntilGiveUp)
             {
-
                 bool anyChanges = false;
                 foreach (Segment segment in puzzle.Rows.Concat(puzzle.Columns))
                 {
@@ -37,10 +36,11 @@ namespace PicrossSolver.Helpers
 
         public List<SegmentSolver> SegmentSolvers => new List<SegmentSolver>()
         {
+            new SegmentEntirelyFilled(),         // The segment is all true or all false
             new SingleSequenceOverlapSolver(),   // Single sequence overlap
             new SingleSequenceConnectEnds(),     // Single sequence connection
             new SingleSequenceExcludeOOB(),      // Single sequence exclude bounds
-            new SegmentCompleteMarkBlanksFalse() // Mark blank cells in a complete sequence as false
+            new SegmentCompleteMarkBlanksFalse() // Mark blank cells in a "complete" segment as false
         };
 
         public bool SolveSegment(Segment segment)

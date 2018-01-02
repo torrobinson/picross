@@ -33,11 +33,17 @@ namespace PicrossSolver.Solves
                     // Exclude known bounds below the minimum and above the maxium
                     for (int i = 0; i< maximumTrue + 1 - theSequence.Count; i++)
                     {
-                        if (segment.Cells[i].MarkFalse() && !cellsChanged) cellsChanged = true;
+                        if (segment.Cells[i].IsUnMarked)
+                        {
+                            if (segment.Cells[i].MarkFalse() && !cellsChanged) cellsChanged = true;
+                        }
                     }
                     for (int i = segment.Length - 1; i > minimumTrue - 1 + theSequence.Count; i--)
                     {
-                        if (segment.Cells[i].MarkFalse() && !cellsChanged) cellsChanged = true;
+                        if (segment.Cells[i].IsUnMarked)
+                        {
+                            if (segment.Cells[i].MarkFalse() && !cellsChanged) cellsChanged = true;
+                        }
                     }
                 }
             }
