@@ -12,6 +12,6 @@ namespace PicrossSolver.Solves
         /// </summary>
         /// <param name="segment"></param>
         /// <returns>Whether or not any cells were marked/filled</returns>
-        public abstract bool Execute(CellSegment segment);
+        public abstract bool Execute(Segment segment);
     }
 }

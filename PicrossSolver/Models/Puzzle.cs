@@ -6,13 +6,13 @@ namespace PicrossSolver.Models
 {
     public class Puzzle
     {
-        public List<CellSegment> Rows { get; set; }
-        public List<CellSegment> Columns { get; set; }
+        public List<Segment> Rows { get; set; }
+        public List<Segment> Columns { get; set; }
 
         public Puzzle()
         {
-            this.Rows = new List<CellSegment>();
-            this.Columns = new List<CellSegment>();
+            this.Rows = new List<Segment>();
+            this.Columns = new List<Segment>();
         }
     }
 }

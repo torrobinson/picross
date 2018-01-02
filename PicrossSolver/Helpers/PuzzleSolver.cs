@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using PicrossSolver.Models;
 using PicrossSolver.Solves;
-using PicrossSolver.Solves._1_sequence;
 
 namespace PicrossSolver.Helpers
 {
@@ -19,13 +18,18 @@ namespace PicrossSolver.Helpers
 
         public static void SolvePuzzle(Puzzle puzzle, int unproductiveAttemptNumber)
         {
-            foreach (CellSegment segment in puzzle.Rows.Concat(puzzle.Columns))
+            foreach (Segment segment in puzzle.Rows.Concat(puzzle.Columns))
             {
                 bool anyChanges = SolveSegment(segment);
 
                 if (!anyChanges)
                 {
                     unproductiveAttemptNumber++;
+                }
+                else
+                {
+                    // Reset on productive solve cycle
+                    unproductiveAttemptNumber = 0;
                 }
 
                 if (unproductiveAttemptNumber > failsUntilGiveUp)
@@ -39,12 +43,13 @@ namespace PicrossSolver.Helpers
 
         public static List<SegmentSolver> SegmentSolvers => new List<SegmentSolver>()
         {
-            new SingleSequenceOverlapSolver(), // Single sequence overlap
-            new SingleSequenceConnectEnds(),   // Single sequence connection
-            new SingleSequenceExcludeOOB(),    // Single sequence exclude bounds
+            new SingleSequenceOverlapSolver(),   // Single sequence overlap
+            new SingleSequenceConnectEnds(),     // Single sequence connection
+            new SingleSequenceExcludeOOB(),      // Single sequence exclude bounds
+            new SegmentCompleteMarkBlanksFalse() // Mark blank cells in a complete sequence as false
         };
 
-        public static bool SolveSegment(CellSegment segment)
+        public static bool SolveSegment(Segment segment)
         {
             bool cellMarked = false;
 

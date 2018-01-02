@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using PicrossSolver.Models;
 
-namespace PicrossSolver.Solves._1_sequence
+namespace PicrossSolver.Solves
 {
     public class SingleSequenceExcludeOOB: SegmentSolver
     {
@@ -14,7 +14,7 @@ namespace PicrossSolver.Solves._1_sequence
         /// </summary>
         /// <param name="segment"></param>
         /// <returns></returns>
-        public override bool Execute(CellSegment segment)
+        public override bool Execute(Segment segment)
         {
             bool cellsChanged = false;
 

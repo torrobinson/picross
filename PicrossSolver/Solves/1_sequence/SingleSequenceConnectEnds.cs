@@ -14,7 +14,7 @@ namespace PicrossSolver.Solves
         /// </summary>
         /// <param name="segment"></param>
         /// <returns></returns>
-        public override bool Execute(CellSegment segment)
+        public override bool Execute(Segment segment)
         {
             bool cellsChanged = false;
 

@@ -13,7 +13,8 @@ namespace PicrossPreview
     {
         static void Main(string[] args)
         {
-            Puzzle mockPuzzle = PuzzleBuilder.CreateMock();
+            //Puzzle mockPuzzle = PuzzleBuilder.CreateMock();
+            Puzzle mockPuzzle = PuzzleBuilder.ReadFromString();
 
             // Draw once
             Draw(mockPuzzle);
@@ -24,15 +25,6 @@ namespace PicrossPreview
             // Draw again
             Draw(mockPuzzle);
 
-            // Todo: Build rows AND columns, and add the same cell to both the corresponding row and column
-            // so that filling them is mirrored in both
-
-            // Loop:
-            // for each row and for each column
-            //     split on Cell !IsEmpty (or unmarked cells)
-            //     for each segment in the split
-            //         run all solves
-            //         once ANY solve changed something, loop back and start over to reevaluate
         }
 
         /// <summary>
@@ -44,40 +36,44 @@ namespace PicrossPreview
             Console.Clear();
 
             // Lets just draw the first row of the puzzle for debug purposes
-            CellSegment segment = puzzle.Rows.First();
-
-            bool first;
-            bool last;
-            int number = 1;
-            foreach (Cell cell in segment.Cells)
+            foreach (Segment row in puzzle.Rows)
             {
-                first = number == 1;
-                last = number == segment.Cells.Count;
+                bool first;
+                bool last;
+                int number = 1;
+                foreach (Cell cell in row.Cells)
+                {
+                    first = number == 1;
+                    last = number == row.Cells.Count;
 
-                if(first)
-                {
-                    Console.Write("[" + GetCellCharacter(cell));
-                }
-                else if(last)
-                {
-                    Console.Write("|" + GetCellCharacter(cell) + "]");
-                }
-                else
-                {
-                    Console.Write("|" + GetCellCharacter(cell));
+                    if (first)
+                    {
+                        Console.Write("[" + GetCellCharacter(cell));
+                    }
+                    else if (last)
+                    {
+                        Console.Write("|" + GetCellCharacter(cell) + "]");
+                    }
+                    else
+                    {
+                        Console.Write("|" + GetCellCharacter(cell));
+                    }
+
+                    number++;
                 }
 
-                number++;
+                // Then draw the sequences
+                Console.Write(" = ");
+                Console.Write(
+                    String.Join(
+                        ", ",
+                        row.MustHaves.Select(seq => seq.Count.ToString())
+                    )
+                );
+
+                Console.WriteLine();
             }
-
-            // Then draw the sequences
-            Console.Write(" = ");
-            Console.Write(
-                String.Join(
-                    ", ",
-                    segment.MustHaves.Select(seq => seq.Count.ToString())
-                )
-            );
+            
 
             Console.ReadLine();
         }

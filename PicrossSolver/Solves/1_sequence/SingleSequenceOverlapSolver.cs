@@ -8,7 +8,7 @@ namespace PicrossSolver.Solves
 {
     public class SingleSequenceOverlapSolver: SegmentSolver
     {
-        public override bool Execute(CellSegment emptySegment)
+        public override bool Execute(Segment emptySegment)
         {
             bool cellsChanged = false;
 
