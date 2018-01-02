@@ -70,6 +70,15 @@ namespace PicrossPreview
                 number++;
             }
 
+            // Then draw the sequences
+            Console.Write(" = ");
+            Console.Write(
+                String.Join(
+                    ", ",
+                    segment.MustHaves.Select(seq => seq.Count.ToString())
+                )
+            );
+
             Console.ReadLine();
         }
 
