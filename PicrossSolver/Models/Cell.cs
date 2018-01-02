@@ -33,6 +33,12 @@ namespace PicrossSolver.Models
             return changed;
         }
 
+        public void MarkUnknown()
+        {
+            this.isFalse = false;
+            this.isTrue = false;
+        }
+
         public bool IsMarked => this.IsFalse || this.IsTrue;
         public bool IsUnMarked => !this.IsMarked;
 

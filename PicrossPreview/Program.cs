@@ -63,7 +63,7 @@ namespace PicrossPreview
                 }
 
                 // Then draw the sequences
-                Console.Write(" = ");
+                Console.Write(" ");
                 Console.Write(
                     String.Join(
                         ", ",
@@ -73,7 +73,26 @@ namespace PicrossPreview
 
                 Console.WriteLine();
             }
-            
+
+            // Draw column sequences on bottom
+            Console.Write(" ");
+            for (int i = 0; i < puzzle.Columns.Max(col => col.MustHaves.Count); i++)
+            {
+                if(i>0) Console.Write("_");
+                foreach (Segment column in puzzle.Columns)
+                {
+                    if (column.MustHaves.Count > i)
+                    {
+                        Console.Write(column.MustHaves[i].Count);
+                    }
+                    else
+                    {
+                        Console.Write("_");
+                    }
+                    Console.Write(" ");
+                }
+                Console.WriteLine();
+            }
 
             Console.ReadLine();
         }

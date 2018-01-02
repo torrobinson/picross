@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using PicrossSolver.Models;
 
@@ -33,6 +34,11 @@ namespace PicrossSolver.Helpers
             {
                 currentSequenceCount++;
                 mustHaves.Add(new Sequence() { Count = currentSequenceCount });
+            }
+
+            if (mustHaves.Count == 0)
+            {
+                mustHaves.Add(new Sequence() { Count = 0 });
             }
 
             return mustHaves;

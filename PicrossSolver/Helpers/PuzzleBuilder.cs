@@ -49,9 +49,11 @@ namespace PicrossSolver.Helpers
         public static Puzzle ReadFromString()
         {
             string map =
-                "___###____" + Environment.NewLine +
-                "__##______" + Environment.NewLine +
-                "_##_______";
+                "_____" + Environment.NewLine +
+                "_###_" + Environment.NewLine +
+                "_#_#_" + Environment.NewLine +
+                "_###_" + Environment.NewLine +
+                "#####";
 
             Puzzle puzzle = new Puzzle();
 
@@ -63,8 +65,8 @@ namespace PicrossSolver.Helpers
                 foreach (char cellString in line.ToCharArray())
                 {
                     Cell cell = new Cell(){Index = index};
-                    //if (cellString == '#')
-                        //cell.MarkTrue();
+                    if (cellString == '#')
+                        cell.MarkTrue();
                     segment.Cells.Add(cell);
                     index++;
                 }
@@ -85,6 +87,15 @@ namespace PicrossSolver.Helpers
             {
                 column.MustHaves = SequenceGenerator.GenerateMustHaves(column);
             }
+
+            // Now that we have the musthaves, unmark all cells again
+            //foreach (Segment row in puzzle.Rows)
+            //{
+            //    foreach (Cell cell in row.Cells)
+            //    {
+            //        cell.MarkUnknown();
+            //    }
+            //}
 
             return puzzle;
         }

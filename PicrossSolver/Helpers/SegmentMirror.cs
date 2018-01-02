@@ -36,7 +36,7 @@ namespace PicrossSolver.Helpers
                 int c = 0;
                 foreach (Cell cell in row.Cells)
                 {
-                    columns[c].Cells[r].MarkTrue();
+                    columns[c].Cells[r] = cell;
                     c++;
                 }
 
