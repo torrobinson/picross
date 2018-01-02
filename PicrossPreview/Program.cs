@@ -29,6 +29,7 @@ namespace PicrossPreview
                 new SingleSequenceExcludeOOB(),       // Single sequence exclude bounds
                 new SegmentCompleteMarkBlanksFalse(), // Mark blank cells in a "complete" segment as false
                 new SequenceTerminatesOnASide(), // Terminate the other side of a full sequence touching an edge
+                new OnlyFinalPiecesRemain(), // When the number of blanks remaining match the number of trues remaining, fill them all in
             };
 
             solver.SolvePuzzle(mockPuzzle);

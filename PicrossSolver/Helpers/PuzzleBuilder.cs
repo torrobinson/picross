@@ -12,8 +12,8 @@ namespace PicrossSolver.Helpers
         {
             string map =
                 "_____" + Environment.NewLine +
-                "_#___" + Environment.NewLine +
-                "_#___" + Environment.NewLine +
+                "_#_#_" + Environment.NewLine +
+                "_#_##" + Environment.NewLine +
                 "_##__" + Environment.NewLine +
                 "#####";
 
