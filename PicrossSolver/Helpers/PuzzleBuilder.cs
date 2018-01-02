@@ -13,6 +13,7 @@ namespace PicrossSolver.Helpers
         /// <returns>A mock puzzle</returns>
         public static Puzzle CreateMock()
         {
+            // _ _ _ _ _ _ _ _ x _  =  8
             Puzzle puzzle = new Puzzle();
 
             // New row
@@ -29,12 +30,16 @@ namespace PicrossSolver.Helpers
                 );
             }
 
+            // Say it has a sequence of 6 in it
             segment.MustHaves.Add(
                 new Sequence()
                 {
                     Count = 6
                 }
             );
+
+            // Say we have a known at index 08
+            segment.Cells[8].MarkTrue();
 
             puzzle.Rows.Add(segment);
 

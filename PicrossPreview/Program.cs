@@ -56,15 +56,15 @@ namespace PicrossPreview
 
                 if(first)
                 {
-                    Console.Write("[" + Mark(cell));
+                    Console.Write("[" + GetCellCharacter(cell));
                 }
                 else if(last)
                 {
-                    Console.Write("|" + Mark(cell) + "]");
+                    Console.Write("|" + GetCellCharacter(cell) + "]");
                 }
                 else
                 {
-                    Console.Write("|" + Mark(cell));
+                    Console.Write("|" + GetCellCharacter(cell));
                 }
 
                 number++;
@@ -73,23 +73,16 @@ namespace PicrossPreview
             Console.ReadLine();
         }
 
-        private static string Mark(Cell cell)
+        private static string GetCellCharacter(Cell cell)
         {
-            if (cell.IsMarked)
+            if (cell.IsTrue)
             {
-                if (cell.IsTrue)
-                {
-                    return "#";
-                }
-
-                if (cell.IsFalse)
-                {
-                    return "x";
-                }
+                return "#";
             }
-            if (cell.IsUnMarked)
+
+            if (cell.IsFalse)
             {
-                return " ";
+                return "x";
             }
 
             return " ";

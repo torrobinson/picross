@@ -38,7 +38,8 @@ namespace PicrossSolver.Helpers
 
         public static List<SegmentSolver> SegmentSolvers => new List<SegmentSolver>()
         {
-            new SingleSequenceOverlapSolver() // Single sequence overlap
+            new SingleSequenceOverlapSolver(), // Single sequence overlap
+            new SingleSequenceConnectEnds(),   // Singler sequence connection
         };
 
         public static bool SolveSegment(CellSegment segment)
