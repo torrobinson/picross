@@ -11,30 +11,30 @@ namespace PicrossSolver.Models
     {
         public int Index { get; set; }        
         
-        // Filled
-        private bool filled = false;
-        public bool IsFilled => this.filled;
-        /// <summary>
-        /// Fill the cell
-        /// </summary>
-        public void Fill()
+        private bool isTrue = false;
+        public bool IsTrue => this.isTrue;
+        public bool MarkTrue()
         {
-            this.filled = true;
+            bool changed = !this.isTrue;
+            this.isTrue = true;
+            this.isFalse = false;
+
+            return changed;
         }
 
-        // Xed
-        private bool xed = false;
-        public bool IsXed => this.xed;
-        /// <summary>
-        /// 'X' the cell, or mark is as a known un-marked cell
-        /// </summary>
-        public void X()
+        private bool isFalse = false;
+        public bool IsFalse => this.isFalse;
+        public bool MarkFalse()
         {
-            this.xed = true;
+            bool changed = !this.isFalse;
+            this.isFalse = true;
+            this.isTrue = false;
+
+            return changed;
         }
 
-
-        public bool IsEmpty => !IsFilled && !IsXed;
+        public bool IsMarked => this.IsFalse || this.IsTrue;
+        public bool IsUnMarked => !this.IsMarked;
 
     }
 }

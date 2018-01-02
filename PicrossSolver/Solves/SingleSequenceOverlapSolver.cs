@@ -6,10 +6,12 @@ using PicrossSolver.Models;
 
 namespace PicrossSolver.Solves
 {
-    public class SingleSequenceSolver: SegmentSolver
+    public class SingleSequenceOverlapSolver: SegmentSolver
     {
-        public override void Execute(CellSegment emptySegment)
+        public override bool Execute(CellSegment emptySegment)
         {
+            bool cellsChanged = false;
+
             if (emptySegment.MustHaves.Count == 1)
             {
                 // For a single sequence in a segment,
@@ -20,9 +22,9 @@ namespace PicrossSolver.Solves
                 {
                     foreach (Cell cell in emptySegment.Cells)
                     {
-                        cell.Fill();
+                        if (cell.MarkTrue() && !cellsChanged) cellsChanged = true;
                     }
-                    return;
+                    return cellsChanged;
                 }
 
                 // Check for overlap
@@ -30,17 +32,23 @@ namespace PicrossSolver.Solves
                 if (overlapFromMiddle > 0)
                 {
                     int middleIndex = emptySegment.Length / 2;
-                    // Fill in the middle of the segment with overlap*2
+
                     for (int i = 0 ; i < overlapFromMiddle; i++)
                     {
                         // Going up
-                        emptySegment.Cells[middleIndex - i].Fill();
+                        if (emptySegment.Cells[middleIndex - i].MarkTrue()
+                            && !cellsChanged)
+                            cellsChanged = true;
 
                         // Going down
-                        emptySegment.Cells[middleIndex - 1 + i].Fill();
+                        if (emptySegment.Cells[middleIndex - 1 + i].MarkTrue()
+                            && !cellsChanged)
+                            cellsChanged = true;
                     }
                 }
             }
+
+            return cellsChanged;
         }
     }
 }

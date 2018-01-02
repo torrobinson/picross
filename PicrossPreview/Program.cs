@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PicrossSolver.Helpers;
 using PicrossSolver.Models;
 using PicrossSolver.Solves;
 
@@ -12,43 +13,16 @@ namespace PicrossPreview
     {
         static void Main(string[] args)
         {
-            // New test segment
-            CellSegment segment = new CellSegment();
-
-            // Add 10 cells to it
-            for (int i = 0; i < 9; i++)
-            {
-                segment.Cells.Add(
-                    new Cell()
-                    {
-                        Index = i
-                    }
-                );
-            }
-
-            segment.MustHaves.Add(
-                new Sequence()
-                {
-                    Count = 20
-                }
-            );
+            Puzzle mockPuzzle = PuzzleBuilder.CreateMock();
 
             // Draw once
-            Draw(segment);
+            Draw(mockPuzzle);
 
-            // Run solve to debug
-            List<SegmentSolver> solvers = new List<SegmentSolver>()
-            {
-                new SingleSequenceSolver()
-            };
-            foreach (SegmentSolver solver in solvers)
-            {
-                solver.Execute(segment);
-            }
+            // Solve as much as we can
+            PuzzleSolver.SolvePuzzle(mockPuzzle);
             
             // Draw again
-            Draw(segment);
-
+            Draw(mockPuzzle);
 
             // Todo: Build rows AND columns, and add the same cell to both the corresponding row and column
             // so that filling them is mirrored in both
@@ -65,9 +39,12 @@ namespace PicrossPreview
         /// ROUGHLY draw out single segments for now. Only need to debug solvers on 1 segment at a time.
         /// </summary>
         /// <param name="segment"></param>
-        private static void Draw(CellSegment segment)
+        private static void Draw(Puzzle puzzle)
         {
             Console.Clear();
+
+            // Lets just draw the first row of the puzzle for debug purposes
+            CellSegment segment = puzzle.Rows.First();
 
             bool first;
             bool last;
@@ -77,23 +54,45 @@ namespace PicrossPreview
                 first = number == 1;
                 last = number == segment.Cells.Count;
 
-                if (first)
+                if(first)
                 {
-                    Console.Write(cell.IsFilled ? "[X" : "[ ");
+                    Console.Write("[" + Mark(cell));
                 }
-                if (last)
+                else if(last)
                 {
-                    Console.Write(cell.IsFilled ? "|X]" : "| ]");
+                    Console.Write("|" + Mark(cell) + "]");
                 }
                 else
                 {
-                    Console.Write(cell.IsFilled ? "|X" : "| ");
+                    Console.Write("|" + Mark(cell));
                 }
 
                 number++;
             }
 
             Console.ReadLine();
+        }
+
+        private static string Mark(Cell cell)
+        {
+            if (cell.IsMarked)
+            {
+                if (cell.IsTrue)
+                {
+                    return "#";
+                }
+
+                if (cell.IsFalse)
+                {
+                    return "x";
+                }
+            }
+            if (cell.IsUnMarked)
+            {
+                return " ";
+            }
+
+            return " ";
         }
     }
 }
