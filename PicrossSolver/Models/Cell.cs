@@ -12,7 +12,15 @@ namespace PicrossSolver.Models
         public int Index { get; set; }        
         
         private bool isTrue = false;
-        public bool IsTrue => this.isTrue;
+
+        public bool IsTrue
+        {
+            get
+            {
+                return this.isTrue;
+            }
+        }
+
         public bool MarkTrue()
         {
             bool changed = !this.isTrue;
@@ -39,8 +47,15 @@ namespace PicrossSolver.Models
             this.isTrue = false;
         }
 
-        public bool IsMarked => this.IsFalse || this.IsTrue;
-        public bool IsUnMarked => !this.IsMarked;
+        public bool IsMarked => this.isFalse || this.isTrue;
+
+        public bool IsUnMarked
+        {
+            get
+            {
+                return !this.IsMarked;
+            }
+        }
 
     }
 }

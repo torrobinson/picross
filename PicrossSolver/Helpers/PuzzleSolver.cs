@@ -7,20 +7,21 @@ using PicrossSolver.Solves;
 
 namespace PicrossSolver.Helpers
 {
-    public static class PuzzleSolver
+    public class PuzzleSolver
     {
-        private const int failsUntilGiveUp = 10;
+        private int unproductiveAttemptNumber = 0;
+        private const int failsUntilGiveUp = 100;
 
-        public static void SolvePuzzle(Puzzle puzzle)
+        public void SolvePuzzle(Puzzle puzzle)
         {
-            SolvePuzzle(puzzle, 0);
-        }
-
-        public static void SolvePuzzle(Puzzle puzzle, int unproductiveAttemptNumber)
-        {
-            foreach (Segment segment in puzzle.Rows.Concat(puzzle.Columns))
+            while (unproductiveAttemptNumber < failsUntilGiveUp)
             {
-                bool anyChanges = SolveSegment(segment);
+
+                bool anyChanges = false;
+                foreach (Segment segment in puzzle.Rows.Concat(puzzle.Columns))
+                {
+                    anyChanges = SolveSegment(segment) && !anyChanges;
+                }
 
                 if (!anyChanges)
                 {
@@ -31,17 +32,10 @@ namespace PicrossSolver.Helpers
                     // Reset on productive solve cycle
                     unproductiveAttemptNumber = 0;
                 }
-
-                if (unproductiveAttemptNumber > failsUntilGiveUp)
-                {
-                    return;
-                }
-
-                SolvePuzzle(puzzle, unproductiveAttemptNumber);
             }
         }
 
-        public static List<SegmentSolver> SegmentSolvers => new List<SegmentSolver>()
+        public List<SegmentSolver> SegmentSolvers => new List<SegmentSolver>()
         {
             new SingleSequenceOverlapSolver(),   // Single sequence overlap
             new SingleSequenceConnectEnds(),     // Single sequence connection
@@ -49,7 +43,7 @@ namespace PicrossSolver.Helpers
             new SegmentCompleteMarkBlanksFalse() // Mark blank cells in a complete sequence as false
         };
 
-        public static bool SolveSegment(Segment segment)
+        public bool SolveSegment(Segment segment)
         {
             bool cellMarked = false;
 

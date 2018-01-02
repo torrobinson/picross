@@ -46,7 +46,7 @@ namespace PicrossSolver.Helpers
             string map =
                 "_____" + Environment.NewLine +
                 "_###_" + Environment.NewLine +
-                "_#_#_" + Environment.NewLine +
+                "_###_" + Environment.NewLine +
                 "_###_" + Environment.NewLine +
                 "#####";
 
@@ -84,13 +84,13 @@ namespace PicrossSolver.Helpers
             }
 
             // Now that we have the musthaves, unmark all cells again
-            //foreach (Segment row in puzzle.Rows)
-            //{
-            //    foreach (Cell cell in row.Cells)
-            //    {
-            //        cell.MarkUnknown();
-            //    }
-            //}
+            foreach (Segment row in puzzle.Rows)
+            {
+                foreach (Cell cell in row.Cells)
+                {
+                    cell.MarkUnknown();
+                }
+            }
 
             return puzzle;
         }

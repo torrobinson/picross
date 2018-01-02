@@ -20,7 +20,8 @@ namespace PicrossPreview
             Draw(mockPuzzle);
 
             // Solve as much as we can
-            PuzzleSolver.SolvePuzzle(mockPuzzle);
+            PuzzleSolver solver = new PuzzleSolver();
+            solver.SolvePuzzle(mockPuzzle);
             
             // Draw again
             Draw(mockPuzzle);
@@ -63,10 +64,10 @@ namespace PicrossPreview
                 }
 
                 // Then draw the sequences
-                Console.Write(" ");
+                Console.Write("--");
                 Console.Write(
                     String.Join(
-                        ", ",
+                        " ",
                         row.MustHaves.Select(seq => seq.Count.ToString())
                     )
                 );
@@ -75,10 +76,16 @@ namespace PicrossPreview
             }
 
             // Draw column sequences on bottom
+            foreach (Segment column in puzzle.Columns)
+            {
+                Console.Write(" |");
+            }
+            Console.WriteLine();
+
             Console.Write(" ");
             for (int i = 0; i < puzzle.Columns.Max(col => col.MustHaves.Count); i++)
             {
-                if(i>0) Console.Write("_");
+                if(i>0) Console.Write(" ");
                 foreach (Segment column in puzzle.Columns)
                 {
                     if (column.MustHaves.Count > i)
@@ -87,7 +94,7 @@ namespace PicrossPreview
                     }
                     else
                     {
-                        Console.Write("_");
+                        Console.Write(" ");
                     }
                     Console.Write(" ");
                 }

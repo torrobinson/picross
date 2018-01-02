@@ -11,7 +11,13 @@ namespace PicrossSolver.Models
         public List<Cell> Cells { get; set; }
         public int Length => this.Cells.Count;
 
-        public bool IsComplete => MustHaves.Sum(seq=>seq.Count) == Cells.Count(cell => cell.IsTrue);
+        public bool IsComplete
+        {
+            get
+            {
+                return MustHaves.Sum(seq => seq.Count) == Cells.Count(cell => cell.IsTrue);
+            }
+        }
 
         public Segment()
         {
