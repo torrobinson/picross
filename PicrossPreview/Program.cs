@@ -47,6 +47,8 @@ namespace PicrossPreview
             string topIntersection = "\u252C"; //┬
             string bottomIntersection = "\u2534"; //┴
             string intersection = "\u253C"; //┼
+            string rightArrow = "\u2192"; //→
+            string downArrow = "\u2193"; //↓
 
 
             // Draw the top line
@@ -88,7 +90,7 @@ namespace PicrossPreview
                 }
 
                 // Then draw the sequences
-                Console.Write("--");
+                Console.Write(rightArrow);
                 Console.Write(
                     String.Join(
                         " ",
@@ -124,7 +126,7 @@ namespace PicrossPreview
             // Draw column sequences on bottom
             foreach (Segment column in puzzle.Columns)
             {
-                Console.Write(" |");
+                Console.Write(" " + downArrow);
             }
             Console.WriteLine();
 

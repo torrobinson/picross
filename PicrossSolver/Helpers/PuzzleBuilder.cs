@@ -13,8 +13,8 @@ namespace PicrossSolver.Helpers
             string map =
                 "#____" + Environment.NewLine +
                 "##___" + Environment.NewLine +
+                "##___" + Environment.NewLine +
                 "###__" + Environment.NewLine +
-                "####_" + Environment.NewLine +
                 "#####";
 
             Puzzle puzzle = new Puzzle();
