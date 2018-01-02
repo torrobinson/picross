@@ -14,6 +14,8 @@ namespace PicrossSolver.Helpers
 
         public void SolvePuzzle(Puzzle puzzle)
         {
+            unproductiveAttemptNumber = 0;
+
             while (unproductiveAttemptNumber < failsUntilGiveUp)
             {
                 bool anyChanges = false;
@@ -34,14 +36,7 @@ namespace PicrossSolver.Helpers
             }
         }
 
-        public List<SegmentSolver> SegmentSolvers => new List<SegmentSolver>()
-        {
-            new SegmentEntirelyFilled(),         // The segment is all true or all false
-            new SingleSequenceOverlapSolver(),   // Single sequence overlap
-            new SingleSequenceConnectEnds(),     // Single sequence connection
-            new SingleSequenceExcludeOOB(),      // Single sequence exclude bounds
-            new SegmentCompleteMarkBlanksFalse() // Mark blank cells in a "complete" segment as false
-        };
+        public List<SegmentSolver> SegmentSolvers { get; set; }
 
         public bool SolveSegment(Segment segment)
         {

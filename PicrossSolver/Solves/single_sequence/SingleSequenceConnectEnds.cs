@@ -16,6 +16,8 @@ namespace PicrossSolver.Solves
         /// <returns></returns>
         public override bool Execute(Segment segment)
         {
+            if (!segment.HasBlanks) return false;
+
             bool cellsChanged = false;
 
             // If there's only 1 sequence

@@ -14,7 +14,7 @@ namespace PicrossSolver.Helpers
                 "_____" + Environment.NewLine +
                 "_#___" + Environment.NewLine +
                 "_#___" + Environment.NewLine +
-                "###__" + Environment.NewLine +
+                "_##__" + Environment.NewLine +
                 "#####";
 
             Puzzle puzzle = new Puzzle();

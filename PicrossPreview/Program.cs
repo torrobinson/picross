@@ -21,10 +21,21 @@ namespace PicrossPreview
 
             // Solve as much as we can
             PuzzleSolver solver = new PuzzleSolver();
+            solver.SegmentSolvers = new List<SegmentSolver>()
+            {
+                new SegmentEntirelyFilled(), // The segment is all true or all false
+                new SingleSequenceOverlapSolver(),    // Single sequence overlap
+                new SingleSequenceConnectEnds(),      // Single sequence connection
+                new SingleSequenceExcludeOOB(),       // Single sequence exclude bounds
+                new SegmentCompleteMarkBlanksFalse(), // Mark blank cells in a "complete" segment as false
+                new SequenceTerminatesOnASide(), // Terminate the other side of a full sequence touching an edge
+            };
+
             solver.SolvePuzzle(mockPuzzle);
             
             // Draw again
             Draw(mockPuzzle);
+
 
         }
 

@@ -10,6 +10,8 @@ namespace PicrossSolver.Solves
     {
         public override bool Execute(Segment segment)
         {
+            if (!segment.HasBlanks) return false;
+
             bool cellsChanged = false;
 
             if(segment.IsComplete)

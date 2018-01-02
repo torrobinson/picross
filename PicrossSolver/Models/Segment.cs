@@ -11,6 +11,10 @@ namespace PicrossSolver.Models
         public List<Cell> Cells { get; set; }
         public int Length => this.Cells.Count;
 
+        public int TrueCount => this.Cells.Count(cell=>cell.IsTrue);
+
+        public bool HasBlanks => this.Cells.Any(cell => cell.IsUnMarked);
+
         public bool IsComplete
         {
             get

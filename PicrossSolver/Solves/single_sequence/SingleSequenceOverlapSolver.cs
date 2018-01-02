@@ -8,19 +8,21 @@ namespace PicrossSolver.Solves
 {
     public class SingleSequenceOverlapSolver: SegmentSolver
     {
-        public override bool Execute(Segment emptySegment)
+        public override bool Execute(Segment segment)
         {
+            if (!segment.HasBlanks) return false;
+
             bool cellsChanged = false;
 
-            if (emptySegment.MustHaves.Count == 1)
+            if (segment.MustHaves.Count == 1)
             {
                 // For a single sequence in a segment,
-                Sequence theSequence = emptySegment.MustHaves.First();
+                Sequence theSequence = segment.MustHaves.First();
 
                 // Is it all filled up?
-                if (theSequence.Count >= emptySegment.Length)
+                if (theSequence.Count >= segment.Length)
                 {
-                    foreach (Cell cell in emptySegment.Cells)
+                    foreach (Cell cell in segment.Cells)
                     {
                         if (cell.MarkTrue() && !cellsChanged) cellsChanged = true;
                     }
@@ -28,21 +30,21 @@ namespace PicrossSolver.Solves
                 }
 
                 // Check for overlap
-                int overlapFromMiddle = theSequence.Count - emptySegment.Length / 2;
+                int overlapFromMiddle = theSequence.Count - segment.Length / 2;
                 if (overlapFromMiddle > 0)
                 {
                     // And if it's even, we can work OUTWARDS from the "middle" area
-                    int middleIndex = emptySegment.Length / 2;
+                    int middleIndex = segment.Length / 2;
 
                     for (int i = 0; i < overlapFromMiddle; i++)
                     {
                         // Going up
-                        if (emptySegment.Cells[middleIndex - i].MarkTrue()
+                        if (segment.Cells[middleIndex - i].MarkTrue()
                             && !cellsChanged)
                             cellsChanged = true;
 
                         // Going down
-                        if (emptySegment.Cells[middleIndex - (emptySegment.Length % 2 == 0 ? -1 : 0) + i].MarkTrue()
+                        if (segment.Cells[middleIndex - (segment.Length % 2 == 0 ? -1 : 0) + i].MarkTrue()
                             && !cellsChanged)
                             cellsChanged = true;
                     }
