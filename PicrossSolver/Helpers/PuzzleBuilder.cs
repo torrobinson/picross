@@ -7,47 +7,14 @@ namespace PicrossSolver.Helpers
 {
     public static class PuzzleBuilder
     {
-        /// <summary>
-        /// Create a new mock puzzle
-        /// </summary>
-        /// <returns>A mock puzzle</returns>
+
         public static Puzzle CreateMock()
         {
-            // _ _ _ _ _ x _ _ _ _  =  5
-            Puzzle puzzle = new Puzzle();
-
-            // New row
-            Segment segment = new Segment();
-
-            // Add 10 cells to it
-            for (int i = 0; i < 10; i++)
-            {
-                segment.Cells.Add(
-                    new Cell()
-                    {
-                        Index = i
-                    }
-                );
-            }
-
-            // Say it has a sequence of 6 in it
-            segment.MustHaves.Add(new Sequence(3));
-
-            // Say we have a known at index 08
-            segment.Cells[5].MarkTrue();
-
-            puzzle.Rows.Add(segment);
-
-            return puzzle;
-        }
-
-        public static Puzzle ReadFromString()
-        {
             string map =
-                "_____" + Environment.NewLine +
-                "_###_" + Environment.NewLine +
-                "_###_" + Environment.NewLine +
-                "_###_" + Environment.NewLine +
+                "#____" + Environment.NewLine +
+                "##___" + Environment.NewLine +
+                "###__" + Environment.NewLine +
+                "####_" + Environment.NewLine +
                 "#####";
 
             Puzzle puzzle = new Puzzle();

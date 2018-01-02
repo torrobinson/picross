@@ -14,7 +14,7 @@ namespace PicrossPreview
         static void Main(string[] args)
         {
             //Puzzle mockPuzzle = PuzzleBuilder.CreateMock();
-            Puzzle mockPuzzle = PuzzleBuilder.ReadFromString();
+            Puzzle mockPuzzle = PuzzleBuilder.CreateMock();
 
             // Draw once
             Draw(mockPuzzle);
@@ -29,7 +29,7 @@ namespace PicrossPreview
         }
 
         /// <summary>
-        /// ROUGHLY draw out single segments for now. Only need to debug solvers on 1 segment at a time.
+        /// Draw the puzzle to the console window for previewing
         /// </summary>
         /// <param name="segment"></param>
         private static void Draw(Puzzle puzzle)
