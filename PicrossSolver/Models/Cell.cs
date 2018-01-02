@@ -9,8 +9,11 @@ namespace PicrossSolver.Models
     /// </summary>
     public class Cell
     {
-        public int Index { get; set; }        
-        
+        public int IndexIn(Segment segment)
+        {
+            return segment.Cells.IndexOf(this);
+        }
+
         private bool isTrue = false;
 
         public bool IsTrue

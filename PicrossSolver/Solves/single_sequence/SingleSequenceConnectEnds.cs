@@ -26,8 +26,8 @@ namespace PicrossSolver.Solves
                 if (trueCells.Count() > 1)
                 {
                     // Figure out what to draw between
-                    int startDrawingAt = trueCells.Min(cell => cell.Index);
-                    int endDrawingAt = trueCells.Max(cell => cell.Index);
+                    int startDrawingAt = trueCells.Min(cell => cell.IndexIn(segment));
+                    int endDrawingAt = trueCells.Max(cell => cell.IndexIn(segment));
 
                     // Draw between them
                     for (; startDrawingAt < endDrawingAt; startDrawingAt++)

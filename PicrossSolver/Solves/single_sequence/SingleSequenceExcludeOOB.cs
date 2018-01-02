@@ -27,8 +27,8 @@ namespace PicrossSolver.Solves
                 if (trueCells.Any())
                 {
                     // Find the known bounds
-                    int minimumTrue = trueCells.Min(cell => cell.Index);
-                    int maximumTrue = trueCells.Max(cell => cell.Index);
+                    int minimumTrue = trueCells.Min(cell => cell.IndexIn(segment));
+                    int maximumTrue = trueCells.Max(cell => cell.IndexIn(segment));
 
                     // Exclude known bounds below the minimum and above the maxium
                     for (int i = 0; i< maximumTrue + 1 - theSequence.Count; i++)

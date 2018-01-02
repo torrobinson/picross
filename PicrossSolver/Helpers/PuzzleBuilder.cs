@@ -11,9 +11,9 @@ namespace PicrossSolver.Helpers
         public static Puzzle CreateMock()
         {
             string map =
-                "#____" + Environment.NewLine +
-                "##___" + Environment.NewLine +
-                "##___" + Environment.NewLine +
+                "_____" + Environment.NewLine +
+                "_#___" + Environment.NewLine +
+                "_#___" + Environment.NewLine +
                 "###__" + Environment.NewLine +
                 "#####";
 
@@ -26,7 +26,7 @@ namespace PicrossSolver.Helpers
                 int index = 0;
                 foreach (char cellString in line.ToCharArray())
                 {
-                    Cell cell = new Cell(){Index = index};
+                    Cell cell = new Cell();
                     if (cellString == '#')
                         cell.MarkTrue();
                     segment.Cells.Add(cell);
