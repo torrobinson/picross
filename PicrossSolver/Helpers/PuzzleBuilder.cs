@@ -11,11 +11,16 @@ namespace PicrossSolver.Helpers
         public static Puzzle CreateMock()
         {
             string map =
-                "_____" + Environment.NewLine +
-                "_#_#_" + Environment.NewLine +
-                "_#_##" + Environment.NewLine +
-                "_##__" + Environment.NewLine +
-                "#####";
+                "____######" + Environment.NewLine +
+                "_______#__" + Environment.NewLine +
+                "______##__" + Environment.NewLine +
+                "____##_#__" + Environment.NewLine +
+                "_###___#__" + Environment.NewLine +
+                "#_###_###_" + Environment.NewLine +
+                "######_###" + Environment.NewLine +
+                "##########" + Environment.NewLine +
+                "_###_#####" + Environment.NewLine +
+                "______###_";
 
             Puzzle puzzle = new Puzzle();
 
