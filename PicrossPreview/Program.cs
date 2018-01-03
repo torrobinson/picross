@@ -25,15 +25,22 @@ namespace PicrossPreview
             PuzzleSolver solver = new PuzzleSolver();
             solver.SegmentSolvers = new List<SegmentSolver>()
             {
+                // Start simple with known entire chunks:
                 new SegmentEntirelyFilled(), // The segment is all true or all false
+                new SequenceAddsToSegmentLength(), // When the sequences already adds up to the total size
+
+                // Easy pickings
+                new BookendOnesInOneOnlySequence(), // When the sequence contains only 1s, bookend all 1s with False
+
+                // Perform solves in single number chunks
                 new SingleSequenceOverlapSolver(),    // Single sequence overlap
                 new SingleSequenceConnectEnds(),      // Single sequence connection
                 new SingleSequenceExcludeOOB(),       // Single sequence exclude bounds
+
+                // Finish off
                 new SegmentCompleteMarkBlanksFalse(), // Mark blank cells in a "complete" segment as false
                 new SequenceTerminatesOnASide(), // Terminate the other side of a full sequence touching an edge
                 new OnlyFinalPiecesRemain(), // When the number of blanks remaining match the number of trues remaining, fill them all in
-                new SequenceAddsToSegmentLength(), // When the sequences already adds up to the total size
-                new BookendOnesInOneOnlySequence(), // When the sequence contains only 1s, bookend all 1s with False
             };
 
             Stopwatch stopWatch = new Stopwatch();

@@ -18,6 +18,8 @@ namespace PicrossSolver.Solves
         {
             if (!segment.HasBlanks) return false;
 
+            List<int> falseStartAndEndCounts = base.TrimStartAndEndFalses(segment);
+
             bool cellsChanged = false;
 
             if(segment.MustHaves.Sum(seq=>seq.Count) + segment.MustHaves.Count - 1 == segment.Length)
@@ -41,6 +43,7 @@ namespace PicrossSolver.Solves
                 }
             }
 
+            base.PutStartAndEndBackTogether(falseStartAndEndCounts, segment);
             return cellsChanged;
         }
     }

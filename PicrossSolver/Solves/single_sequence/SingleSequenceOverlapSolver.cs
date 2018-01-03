@@ -12,6 +12,8 @@ namespace PicrossSolver.Solves
         {
             if (!segment.HasBlanks) return false;
 
+            List<int> falseStartAndEndCounts = base.TrimStartAndEndFalses(segment);
+
             bool cellsChanged = false;
 
             if (segment.MustHaves.Count == 1)
@@ -19,21 +21,11 @@ namespace PicrossSolver.Solves
                 // For a single sequence in a segment,
                 Sequence theSequence = segment.MustHaves.First();
 
-                // Is it all filled up?
-                if (theSequence.Count >= segment.Length)
-                {
-                    foreach (Cell cell in segment.Cells)
-                    {
-                        if (cell.MarkTrue() && !cellsChanged) cellsChanged = true;
-                    }
-                    return cellsChanged;
-                }
-
                 // Check for overlap
                 int overlapFromMiddle = theSequence.Count - segment.Length / 2;
                 if (overlapFromMiddle > 0)
                 {
-                    // And if it's even, we can work OUTWARDS from the "middle" area
+                    // Work outwards from the middle
                     int middleIndex = segment.Length / 2;
 
                     for (int i = 0; i < overlapFromMiddle; i++)
@@ -50,7 +42,7 @@ namespace PicrossSolver.Solves
                     }
                 }
             }
-
+            base.PutStartAndEndBackTogether(falseStartAndEndCounts, segment);
             return cellsChanged;
         }
     }
