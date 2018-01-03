@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,7 @@ namespace PicrossPreview
 
             // Draw once
             Draw(mockPuzzle);
+            Console.ReadLine();
 
             // Solve as much as we can
             PuzzleSolver solver = new PuzzleSolver();
@@ -34,11 +36,16 @@ namespace PicrossPreview
                 new SequenceAddsToSegmentLength(), // When the sequences already adds up to the total size
             };
 
+            Stopwatch stopWatch = new Stopwatch();
+            stopWatch.Start();
             solver.SolvePuzzle(mockPuzzle);
+            stopWatch.Stop();
             
             // Draw again
             Draw(mockPuzzle);
 
+            Console.WriteLine("Solve completed in " + stopWatch.Elapsed.TotalMilliseconds + "ms");
+            Console.ReadLine();
 
         }
 
@@ -61,8 +68,8 @@ namespace PicrossPreview
             string topIntersection = "\u252C"; //┬
             string bottomIntersection = "\u2534"; //┴
             string intersection = "\u253C"; //┼
-            string rightArrow = "\u2192"; //→
-            string downArrow = "\u2193"; //↓
+            string rightArrow = "--"; //--
+            string downArrow = "|"; //|
 
 
             // Draw the top line
@@ -162,8 +169,6 @@ namespace PicrossPreview
                 }
                 Console.WriteLine();
             }
-
-            Console.ReadLine();
         }
 
         private static string GetCellCharacter(Cell cell)
