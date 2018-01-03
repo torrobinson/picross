@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using PicrossSolver.Models;
 
-namespace PicrossSolver.Solves.generic
+namespace PicrossSolver.Solves
 {
     public class SequenceAddsToSegmentLength : SegmentSolver
     {

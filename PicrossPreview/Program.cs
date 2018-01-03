@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 using PicrossSolver.Helpers;
 using PicrossSolver.Models;
 using PicrossSolver.Solves;
-using PicrossSolver.Solves.generic;
 
 namespace PicrossPreview
 {
@@ -34,6 +33,7 @@ namespace PicrossPreview
                 new SequenceTerminatesOnASide(), // Terminate the other side of a full sequence touching an edge
                 new OnlyFinalPiecesRemain(), // When the number of blanks remaining match the number of trues remaining, fill them all in
                 new SequenceAddsToSegmentLength(), // When the sequences already adds up to the total size
+                new BookendOnesInOneOnlySequence(), // When the sequence contains only 1s, bookend all 1s with False
             };
 
             Stopwatch stopWatch = new Stopwatch();

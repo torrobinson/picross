@@ -23,11 +23,11 @@ namespace PicrossSolver.Helpers
             //    "______###_";
 
             string map =
-                "#_#__" + Environment.NewLine +
-                "##_#_" + Environment.NewLine +
-                "__#_#" + Environment.NewLine +
-                "##__#" + Environment.NewLine +
-                "#_#_#";
+                "_#___" + Environment.NewLine +
+                "#__#_" + Environment.NewLine +
+                "_#___" + Environment.NewLine +
+                "__#__" + Environment.NewLine +
+                "#_##_";
 
             Puzzle puzzle = new Puzzle();
 
