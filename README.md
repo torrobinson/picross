@@ -3,6 +3,8 @@
 This is a small experiment in taking rules I use to play Picross and automating them.
 I have not referred to any other solvers and I know there are smaller and quicker ways out there, but I wanted to try it myself.
 
+Known rules  are applied to every row and every column, and the entire puzzle is iterated and attempted to be solved as long as changes are made. Once no longer successful, it stops and returns the result formatted in the console window.
+
 
 # Example Puzzle
 ```
