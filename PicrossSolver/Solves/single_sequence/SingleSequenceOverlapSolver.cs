@@ -26,19 +26,39 @@ namespace PicrossSolver.Solves
                 if (overlapFromMiddle > 0)
                 {
                     // Work outwards from the middle
-                    int middleIndex = segment.Length / 2;
+                    double middleIndex = segment.Length / 2.0;
 
-                    for (int i = 0; i < overlapFromMiddle; i++)
+                    // If an odd number is needed, mark the middle 
+                    bool markedMiddle = false;
+                    if (segment.Length % 2 == 1)
                     {
-                        // Going up
-                        if (segment.Cells[middleIndex - i].MarkTrue()
+                        // Mark the middle
+                        if (segment.Cells[(segment.Length - 1) / 2].MarkTrue()
                             && !cellsChanged)
                             cellsChanged = true;
 
-                        // Going down
-                        if (segment.Cells[middleIndex - (segment.Length % 2 == 0 ? -1 : 0) + i].MarkTrue()
-                            && !cellsChanged)
-                            cellsChanged = true;
+                        markedMiddle = true;
+                    }
+
+                    if (!markedMiddle || (markedMiddle && overlapFromMiddle > 1))
+                    {
+                        // Regardless, move outwards if we have to
+                        for (int i = 0; i < overlapFromMiddle; i++)
+                        {
+                            // When odd, we need to do each side from the middle equally
+                            if (segment.Length % 2 == 1)
+                            {
+                                // 2.5-> 1,3 0,4
+                                if (segment.Cells[Convert.ToInt32(Math.Floor(middleIndex)) - (i + 1)].MarkTrue() && !cellsChanged) cellsChanged = true;
+                                if (segment.Cells[Convert.ToInt32(Math.Floor(middleIndex)) + (i + 1)].MarkTrue() && !cellsChanged) cellsChanged = true;
+                            }
+                            else
+                            {
+                                // 2 -> 1,2 0,3
+                                if (segment.Cells[Convert.ToInt32(middleIndex) + (i)].MarkTrue() && !cellsChanged) cellsChanged = true;
+                                if (segment.Cells[Convert.ToInt32(middleIndex) - (i + 1)].MarkTrue() && !cellsChanged) cellsChanged = true;
+                            }
+                        }
                     }
                 }
             }

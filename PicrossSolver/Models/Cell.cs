@@ -33,6 +33,8 @@ namespace PicrossSolver.Models
             return changed;
         }
 
+        public string DebugCharacter => IsTrue ? "#" : IsFalse ? "x" : "_";
+
         private bool isFalse = false;
         public bool IsFalse => this.isFalse;
         public bool MarkFalse()

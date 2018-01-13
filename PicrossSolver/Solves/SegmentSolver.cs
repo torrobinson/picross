@@ -29,12 +29,12 @@ namespace PicrossSolver.Solves
                     .TakeWhile(cell => cell.IsFalse).Reverse().ToList();
 
                 List<Cell> middleSection =
-                    segment.Cells.Skip(startWall.Count).Take(segment.Length - endWall.Count).ToList();
+                    segment.Cells.Skip(startWall.Count).Take(segment.Length - endWall.Count - startWall.Count).ToList();
 
                 // x _ _ _ x
-                // If anyting between is Marked then ignore this all. We only want to deal with walls where
-                //  there's nothing but free space between 1-2 known walls
-                if (middleSection.Any(cell => cell.IsMarked))
+                // If anyting between is False then ignore this all. We only want to deal with walls where
+                //  there's nothing but free space (or already true cells) between 1-2 known walls
+                if (middleSection.Any(cell => cell.IsFalse))
                 {
                     return new List<int>(){0,0};
                 }
@@ -42,7 +42,6 @@ namespace PicrossSolver.Solves
                 {
                     List<int> startAndEnd = new List<int>() { startWall.Count(), endWall.Count() };
                     segment.Cells = middleSection;
-
 
                     return startAndEnd;
                 }

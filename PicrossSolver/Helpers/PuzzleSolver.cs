@@ -10,17 +10,22 @@ namespace PicrossSolver.Helpers
     public class PuzzleSolver
     {
         private int unproductiveAttemptNumber = 0;
-        private const int failsUntilGiveUp = 50;
+        private const int UnproductiveAttemptsUntilGiveUp = 50;
 
         public void SolvePuzzle(Puzzle puzzle)
         {
             unproductiveAttemptNumber = 0;
 
-            while (unproductiveAttemptNumber < failsUntilGiveUp)
+            while (unproductiveAttemptNumber < UnproductiveAttemptsUntilGiveUp)
             {
                 bool anyChanges = false;
                 foreach (Segment segment in puzzle.Rows.Concat(puzzle.Columns))
                 {
+                    if (puzzle.DebugVisual == "_____\r\n#x###\r\n_____")
+                    {
+                        var foo = "bar";
+                    }
+
                     anyChanges = SolveSegment(segment) && !anyChanges;
                 }
 

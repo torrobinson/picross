@@ -23,7 +23,7 @@ namespace PicrossSolver.Helpers
             // And prepopulate with cells
             foreach (Segment column in columns)
             {
-                foreach (Segment column1 in columns)
+                foreach (Segment row in rows)
                 {
                     column.Cells.Add(new Cell());
                 }

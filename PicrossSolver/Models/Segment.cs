@@ -11,6 +11,8 @@ namespace PicrossSolver.Models
         public List<Cell> Cells { get; set; }
         public int Length => this.Cells.Count;
 
+        public string DebugVisual => String.Join("", Cells.Select(cell => cell.DebugCharacter));
+
         public int TrueCount => this.Cells.Count(cell=>cell.IsTrue);
 
         public bool HasBlanks => this.Cells.Any(cell => cell.IsUnMarked);

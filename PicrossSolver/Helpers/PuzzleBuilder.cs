@@ -19,7 +19,7 @@ namespace PicrossSolver.Helpers
                 "#_###_###_" + Environment.NewLine +
                 "######_###" + Environment.NewLine +
                 "##########" + Environment.NewLine +
-                "_###_#####" + Environment.NewLine +
+                "####_#####" + Environment.NewLine +
                 "______###_";
 
             //string map =
@@ -27,6 +27,11 @@ namespace PicrossSolver.Helpers
             //    "#__#_" + Environment.NewLine +
             //    "_#___" + Environment.NewLine +
             //    "__#__" + Environment.NewLine +
+            //    "#_##_";
+
+            //string map =
+            //    "_#_#_" + Environment.NewLine +
+            //    "#_###" + Environment.NewLine +
             //    "#_##_";
 
             //string map =

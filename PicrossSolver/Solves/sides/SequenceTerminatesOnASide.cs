@@ -9,7 +9,7 @@ namespace PicrossSolver.Solves
     public class SequenceTerminatesOnASide : SegmentSolver
     {
         /// <summary>
-        /// If a segment has it's first sequence in it's entirety touching it's first side, then terminate it with a False.
+        /// If a segment has its first sequence in its entirety touching its first side, then terminate it with a False.
         /// Vice versa for the last sequence.
         /// </summary>
         /// <param name="segment"></param>
