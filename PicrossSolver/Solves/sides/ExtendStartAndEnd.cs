@@ -19,27 +19,28 @@ namespace PicrossSolver.Solves
             if (!segment.HasBlanks) return false;
             List<int> falseStartAndEndCounts = base.TrimStartAndEndFalses(segment);
 
-            if (segment.TrueCount == 0) return false;
-
             bool cellsChanged = false;
-
-            if (segment.Cells.First().IsTrue)
+            if (segment.TrueCount > 0)
             {
-                foreach (Cell cell in segment.Cells.Take(segment.MustHaves.First().Count))
-                {
-                    if (cell.MarkTrue() && !cellsChanged) cellsChanged = true;
-                }
-            }
 
-            //End
-            if (segment.Cells.Last().IsTrue)
-            {
-                segment.Cells.Reverse();
-                foreach (Cell cell in segment.Cells.Take(segment.MustHaves.Last().Count))
+                if (segment.Cells.First().IsTrue)
                 {
-                    if (cell.MarkTrue() && !cellsChanged) cellsChanged = true;
+                    foreach (Cell cell in segment.Cells.Take(segment.MustHaves.First().Count))
+                    {
+                        if (cell.MarkTrue() && !cellsChanged) cellsChanged = true;
+                    }
                 }
-                segment.Cells.Reverse();
+
+                //End
+                if (segment.Cells.Last().IsTrue)
+                {
+                    segment.Cells.Reverse();
+                    foreach (Cell cell in segment.Cells.Take(segment.MustHaves.Last().Count))
+                    {
+                        if (cell.MarkTrue() && !cellsChanged) cellsChanged = true;
+                    }
+                    segment.Cells.Reverse();
+                }
             }
 
             base.PutStartAndEndBackTogether(falseStartAndEndCounts, segment);

@@ -10,36 +10,42 @@ namespace PicrossSolver.Helpers
 
         public static Puzzle CreateMock()
         {
-            //string map =
-            //    "____######" + Environment.NewLine +
-            //    "_______#__" + Environment.NewLine +
-            //    "______##__" + Environment.NewLine +
-            //    "____##_#__" + Environment.NewLine +
-            //    "_###___#__" + Environment.NewLine +
-            //    "#_###_###_" + Environment.NewLine +
-            //    "######_###" + Environment.NewLine +
-            //    "##########" + Environment.NewLine +
-            //    "####_#####" + Environment.NewLine +
-            //    "______###_";
-
-            //string map =
-            //    "_#___" + Environment.NewLine +
-            //    "#__#_" + Environment.NewLine +
-            //    "_#___" + Environment.NewLine +
-            //    "__#__" + Environment.NewLine +
-            //    "#_##_";
-
             string map =
-                "_#_#_" + Environment.NewLine +
-                "#_###" + Environment.NewLine +
-                "#_##_";
+                "____######" + Environment.NewLine +
+                "_______#__" + Environment.NewLine +
+                "______##__" + Environment.NewLine +
+                "____##_#__" + Environment.NewLine +
+                "_###___#__" + Environment.NewLine +
+                "#_###_###_" + Environment.NewLine +
+                "######_###" + Environment.NewLine +
+                "##########" + Environment.NewLine +
+                "####_#####" + Environment.NewLine +
+                "______###_";
 
             //string map =
-            //    "_____" + Environment.NewLine +
-            //    "_____" + Environment.NewLine +
-            //    "_#_#_" + Environment.NewLine +
-            //    "_____" + Environment.NewLine +
-            //    "_____";
+            //    "__________" + Environment.NewLine +
+            //    "__________" + Environment.NewLine +
+            //    "__________" + Environment.NewLine +
+            //    "__________" + Environment.NewLine +
+            //    "__________" + Environment.NewLine +
+            //    "__________" + Environment.NewLine +
+            //    "__________" + Environment.NewLine +
+            //    "__________" + Environment.NewLine +
+            //    "__________" + Environment.NewLine +
+            //    "__________";
+
+            //string map =
+            //    "_____#####" + Environment.NewLine +
+            //    "___##_####" + Environment.NewLine +
+            //    "__#____###" + Environment.NewLine +
+            //    "_###_#####" + Environment.NewLine +
+            //    "#######_##" + Environment.NewLine +
+            //    "#____#####" + Environment.NewLine +
+            //    "#_______##" + Environment.NewLine +
+            //    "_#_#_#_#__" + Environment.NewLine +
+            //    "__#####___" + Environment.NewLine +
+            //    "___#______";
+
 
             Puzzle puzzle = new Puzzle();
 
