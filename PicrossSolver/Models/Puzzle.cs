@@ -11,6 +11,7 @@ namespace PicrossSolver.Models
         public List<Segment> Columns { get; set; }
 
         public string DebugVisual => String.Join(System.Environment.NewLine, Rows.Select(r => r.DebugVisual));
+        public int UnknownCount => Rows.Concat(Columns).Sum(seg => seg.Cells.Count(cell => cell.IsUnMarked));
 
         public Puzzle()
         {

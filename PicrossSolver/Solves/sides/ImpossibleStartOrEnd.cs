@@ -11,11 +11,6 @@ namespace PicrossSolver.Solves.sides
         // After a cap-trim, if start or end is [unmarked][false] and [unmarked.count] < sequences.first.count, then it can't fit, so mark [unmarked] as falses
         public override bool Execute(Segment segment)
         {
-            if (segment.DebugVisual == "x_xx___#_x")
-            {
-                var foo = "bar";
-            }
-
             if (!segment.HasBlanks) return false;
             List<int> falseStartAndEndCounts = base.TrimStartAndEndFalses(segment);
             bool cellsChanged = false;

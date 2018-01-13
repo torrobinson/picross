@@ -43,6 +43,7 @@ namespace PicrossPreview
                 new SequenceTerminatesOnASide(), // Terminate the other side of a full sequence touching an edge
                 new OnlyFinalPiecesRemain(), // When the number of blanks remaining match the number of trues remaining, fill them all in
                 new ImpossibleStartOrEnd(), // When the first or last number in a sequence can't fit in the first or last holes, fill the holes
+                new ExtendStartAndEnd(), // When a first or last segment cell is True, extend it outward the number of known cells in that segment
             };
 
             Stopwatch stopWatch = new Stopwatch();
@@ -54,6 +55,7 @@ namespace PicrossPreview
             Draw(mockPuzzle);
 
             Console.WriteLine("Solve completed in " + stopWatch.Elapsed.TotalMilliseconds + "ms");
+            Console.WriteLine("Unknown cells left: " + mockPuzzle.UnknownCount);
             Console.ReadLine();
 
         }

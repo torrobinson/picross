@@ -10,17 +10,17 @@ namespace PicrossSolver.Helpers
 
         public static Puzzle CreateMock()
         {
-            string map =
-                "____######" + Environment.NewLine +
-                "_______#__" + Environment.NewLine +
-                "______##__" + Environment.NewLine +
-                "____##_#__" + Environment.NewLine +
-                "_###___#__" + Environment.NewLine +
-                "#_###_###_" + Environment.NewLine +
-                "######_###" + Environment.NewLine +
-                "##########" + Environment.NewLine +
-                "####_#####" + Environment.NewLine +
-                "______###_";
+            //string map =
+            //    "____######" + Environment.NewLine +
+            //    "_______#__" + Environment.NewLine +
+            //    "______##__" + Environment.NewLine +
+            //    "____##_#__" + Environment.NewLine +
+            //    "_###___#__" + Environment.NewLine +
+            //    "#_###_###_" + Environment.NewLine +
+            //    "######_###" + Environment.NewLine +
+            //    "##########" + Environment.NewLine +
+            //    "####_#####" + Environment.NewLine +
+            //    "______###_";
 
             //string map =
             //    "_#___" + Environment.NewLine +
@@ -29,10 +29,10 @@ namespace PicrossSolver.Helpers
             //    "__#__" + Environment.NewLine +
             //    "#_##_";
 
-            //string map =
-            //    "_#_#_" + Environment.NewLine +
-            //    "#_###" + Environment.NewLine +
-            //    "#_##_";
+            string map =
+                "_#_#_" + Environment.NewLine +
+                "#_###" + Environment.NewLine +
+                "#_##_";
 
             //string map =
             //    "_____" + Environment.NewLine +
