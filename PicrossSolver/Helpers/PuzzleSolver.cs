@@ -45,6 +45,7 @@ namespace PicrossSolver.Helpers
             foreach (SegmentSolver solver in SegmentSolvers)
             {
                 if (solver.Execute(segment) && !cellMarked) cellMarked = true;
+                SolverStats.Instance.SegmentPasses++;
                 if (cellMarked) break;
             }
 

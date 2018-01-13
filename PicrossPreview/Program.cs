@@ -56,6 +56,7 @@ namespace PicrossPreview
 
             Console.WriteLine("Solve completed in " + stopWatch.Elapsed.TotalMilliseconds + "ms");
             Console.WriteLine("Unknown cells left: " + mockPuzzle.UnknownCount);
+            Console.WriteLine("Segment passes: " + SolverStats.Instance.SegmentPasses);
             Console.ReadLine();
 
         }
