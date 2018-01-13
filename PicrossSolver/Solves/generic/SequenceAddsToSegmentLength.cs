@@ -9,7 +9,7 @@ namespace PicrossSolver.Solves
     public class SequenceAddsToSegmentLength : SegmentSolver
     {
         /// <summary>
-        /// If the sequences and their spacing adds to to segment length, then just draw it out,
+        /// If the sequences and their spacing adds to segment length, then just draw it out,
         /// separated by Falses
         /// </summary>
         /// <param name="segment"></param>

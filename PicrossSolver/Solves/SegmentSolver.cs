@@ -16,7 +16,7 @@ namespace PicrossSolver.Solves
         /// <returns>Whether or not any cells were marked/filled</returns>
         public abstract bool Execute(Segment segment);
 
-        protected List<int> TrimStartAndEndFalses(Segment segment)
+        protected List<int> TrimStartAndEndFalses(Segment segment, bool onlyTrimIfNoFalses = false)
         {
             if ((segment.Cells.First().IsFalse || segment.Cells.Last().IsFalse) && segment.Cells.Any(cell=>cell.IsUnMarked))
             {
@@ -31,12 +31,12 @@ namespace PicrossSolver.Solves
                 List<Cell> middleSection =
                     segment.Cells.Skip(startWall.Count).Take(segment.Length - endWall.Count - startWall.Count).ToList();
 
-                // x _ _ _ x
-                // If anyting between is False then ignore this all. We only want to deal with walls where
-                //  there's nothing but free space (or already true cells) between 1-2 known walls
-                if (middleSection.Any(cell => cell.IsFalse))
+                //// x _ _ _ x
+                //// If anyting between is False then ignore this all. We only want to deal with walls where
+                ////  there's nothing but free space (or already true cells) between 1-2 known walls
+                if (onlyTrimIfNoFalses && middleSection.Any(cell => cell.IsFalse))
                 {
-                    return new List<int>(){0,0};
+                    return new List<int>() { 0, 0 };
                 }
                 else
                 {

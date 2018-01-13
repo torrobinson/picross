@@ -21,7 +21,7 @@ namespace PicrossSolver.Helpers
                 bool anyChanges = false;
                 foreach (Segment segment in puzzle.Rows.Concat(puzzle.Columns))
                 {
-                    if (puzzle.DebugVisual == "_____\r\n#x###\r\n_____")
+                    if (segment == puzzle.Rows.First())
                     {
                         var foo = "bar";
                     }

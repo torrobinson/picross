@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using PicrossSolver.Helpers;
 using PicrossSolver.Models;
 using PicrossSolver.Solves;
+using PicrossSolver.Solves.sides;
 
 namespace PicrossPreview
 {
@@ -41,6 +42,7 @@ namespace PicrossPreview
                 new SegmentCompleteMarkBlanksFalse(), // Mark blank cells in a "complete" segment as false
                 new SequenceTerminatesOnASide(), // Terminate the other side of a full sequence touching an edge
                 new OnlyFinalPiecesRemain(), // When the number of blanks remaining match the number of trues remaining, fill them all in
+                new ImpossibleStartOrEnd(), // When the first or last number in a sequence can't fit in the first or last holes, fill the holes
             };
 
             Stopwatch stopWatch = new Stopwatch();
