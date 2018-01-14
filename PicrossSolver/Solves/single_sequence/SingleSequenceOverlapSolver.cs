@@ -6,7 +6,7 @@ using PicrossSolver.Models;
 
 namespace PicrossSolver.Solves
 {
-    public class SingleSequenceOverlapSolver: SegmentSolver
+    public class SingleSequenceOverlapSolver : SegmentSolver
     {
         public override bool Execute(Segment segment)
         {

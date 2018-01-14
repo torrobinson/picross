@@ -40,7 +40,7 @@ namespace PicrossPreview
             Console.Clear();
 
             int puzzleWidth = 1 + (puzzle.Columns.Count * (_preCell.Length + 1 + _postCell.Length + _pipe.Length));
-            int puzzleHeight = 1 + (puzzle.Rows.Count * 2) + 1 ;
+            int puzzleHeight = 1 + (puzzle.Rows.Count * 2) + 1;
             Console.SetWindowSize(puzzleWidth * 2, puzzleHeight + 10);
 
             // Draw the top line

@@ -20,9 +20,9 @@ namespace PicrossSolver.Solves
             bool cellsChanged = false;
 
             // If the sum == the count (all are 1s)
-            if(segment.MustHaves.Sum(seq=>seq.Count) == segment.MustHaves.Count)
+            if (segment.MustHaves.Sum(seq => seq.Count) == segment.MustHaves.Count)
             {
-                foreach (Cell cell in segment.Cells.Where(cell=>cell.IsTrue))
+                foreach (Cell cell in segment.Cells.Where(cell => cell.IsTrue))
                 {
                     int trueIndex = cell.IndexIn(segment);
 

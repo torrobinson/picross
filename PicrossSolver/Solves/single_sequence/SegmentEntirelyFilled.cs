@@ -6,7 +6,7 @@ using PicrossSolver.Models;
 
 namespace PicrossSolver.Solves
 {
-    public class SegmentEntirelyFilled:SegmentSolver
+    public class SegmentEntirelyFilled : SegmentSolver
     {
         /// <summary>
         /// If the ENTIRE segment is either all true or all false

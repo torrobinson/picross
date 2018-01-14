@@ -18,7 +18,7 @@ namespace PicrossSolver.Solves
 
         protected List<int> TrimStartAndEndFalses(Segment segment, bool onlyTrimIfNoFalses = false)
         {
-            if ((segment.Cells.First().IsFalse || segment.Cells.Last().IsFalse) && segment.Cells.Any(cell=>cell.IsUnMarked))
+            if ((segment.Cells.First().IsFalse || segment.Cells.Last().IsFalse) && segment.Cells.Any(cell => cell.IsUnMarked))
             {
                 // Start at the first Blank
                 List<Cell> startWall = segment.Cells.TakeWhile(cell => cell.IsFalse).ToList();
@@ -54,7 +54,8 @@ namespace PicrossSolver.Solves
         {
             if (StartAndEnd.First() != 0)
             {
-                for(int i=0; i<StartAndEnd.First(); i++) {
+                for (int i = 0; i < StartAndEnd.First(); i++)
+                {
                     Cell FalseCell = new Cell();
                     FalseCell.MarkFalse();
                     MiddleSegment.Cells.Insert(0, FalseCell);

@@ -22,7 +22,7 @@ namespace PicrossSolver.Solves
 
             bool cellsChanged = false;
 
-            if(segment.MustHaves.Sum(seq=>seq.Count) + segment.MustHaves.Count - 1 == segment.Length)
+            if (segment.MustHaves.Sum(seq => seq.Count) + segment.MustHaves.Count - 1 == segment.Length)
             {
                 int i = 0;
                 foreach (Sequence sequence in segment.MustHaves)

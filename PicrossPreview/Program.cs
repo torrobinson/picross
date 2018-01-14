@@ -55,7 +55,7 @@ namespace PicrossPreview
             solver.SolvePuzzle(puzzle);
             // Stop the stopwatch
             stopWatch.Stop();
-            
+
             // Draw again
             Renderer.Draw(puzzle);
 

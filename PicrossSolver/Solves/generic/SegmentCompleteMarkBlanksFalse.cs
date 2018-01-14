@@ -14,7 +14,7 @@ namespace PicrossSolver.Solves
 
             bool cellsChanged = false;
 
-            if(segment.IsComplete)
+            if (segment.IsComplete)
             {
                 foreach (Cell cell in segment.Cells.Where(cell => cell.IsUnMarked))
                 {

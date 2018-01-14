@@ -26,7 +26,7 @@ namespace PicrossSolver.Solves
                     segment.Cells.Count(cell => cell.IsUnMarked)
                )
             {
-                foreach (Cell cell in segment.Cells.Where(cell=>cell.IsUnMarked))
+                foreach (Cell cell in segment.Cells.Where(cell => cell.IsUnMarked))
                 {
                     if (cell.MarkTrue() & !cellsChanged) cellsChanged = true;
                 }

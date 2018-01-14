@@ -6,7 +6,7 @@ using PicrossSolver.Models;
 
 namespace PicrossSolver.Solves
 {
-    public class SingleSequenceExcludeOOB: SegmentSolver
+    public class SingleSequenceExcludeOOB : SegmentSolver
     {
         /// <summary>
         /// If we have a single sequence and we know at least 1 part of it, mark anything
@@ -35,7 +35,7 @@ namespace PicrossSolver.Solves
                     int maximumTrue = trueCells.Max(cell => cell.IndexIn(segment));
 
                     // Exclude known bounds below the minimum and above the maxium
-                    for (int i = 0; i< maximumTrue + 1 - theSequence.Count; i++)
+                    for (int i = 0; i < maximumTrue + 1 - theSequence.Count; i++)
                     {
                         if (segment.Cells[i].IsUnMarked)
                         {
