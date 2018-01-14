@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using PicrossPreview.Puzzles;
 using PicrossSolver.Models;
 
 namespace PicrossSolver.Helpers
@@ -20,7 +21,7 @@ namespace PicrossSolver.Helpers
                 foreach (char cellString in line.ToCharArray())
                 {
                     Cell cell = new Cell();
-                    if (cellString == '#')
+                    if (cellString == PuzzleStrings.TrueCharacter)
                         cell.MarkTrue();
                     segment.Cells.Add(cell);
                     index++;

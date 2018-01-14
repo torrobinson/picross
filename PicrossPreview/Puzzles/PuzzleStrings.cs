@@ -8,6 +8,7 @@ namespace PicrossPreview.Puzzles
 {
     public static class PuzzleStrings
     {
+        public static char TrueCharacter = '#';
         public static string Cherries =>
             "____######" + Environment.NewLine +
             "_______#__" + Environment.NewLine +
@@ -20,17 +21,17 @@ namespace PicrossPreview.Puzzles
             "####_#####" + Environment.NewLine +
             "______###_";
 
-        public static string TenBlank =>
-            "__________" + Environment.NewLine +
-            "__________" + Environment.NewLine +
-            "__________" + Environment.NewLine +
-            "__________" + Environment.NewLine +
-            "__________" + Environment.NewLine +
-            "__________" + Environment.NewLine +
-            "__________" + Environment.NewLine +
-            "__________" + Environment.NewLine +
-            "__________" + Environment.NewLine +
-            "__________";
+        public static string TenBlank => (
+            "_____ _____" + Environment.NewLine +
+            "_____ _____" + Environment.NewLine +
+            "_____ _____" + Environment.NewLine +
+            "_____ _____" + Environment.NewLine +
+            "_____ _____" + Environment.NewLine +
+            "_____ _____" + Environment.NewLine +
+            "_____ _____" + Environment.NewLine +
+            "_____ _____" + Environment.NewLine +
+            "_____ _____" + Environment.NewLine +
+            "_____ _____").Replace(" ", String.Empty);
 
         public static string Sword =>
          (
@@ -48,7 +49,7 @@ namespace PicrossPreview.Puzzles
             "_____ #_##_ _____" + Environment.NewLine +
             "_____ #_##_ _____" + Environment.NewLine +
             "_#### ##### ####_" + Environment.NewLine +
-            "##___ ____ #####").Replace(" ", "");
+            "##___ ____ #####").Replace(" ", String.Empty);
 
         public static string FifteenBlank =>
         (
@@ -66,7 +67,7 @@ namespace PicrossPreview.Puzzles
             "_____ _____ _____" + Environment.NewLine +
             "_____ _____ _____" + Environment.NewLine +
             "_____ _____ _____" + Environment.NewLine +
-            "_____ _____ _____").Replace(" ", "");
+            "_____ _____ _____").Replace(" ", String.Empty);
 
         public static string Difficult =>
             "_____#####" + Environment.NewLine +
