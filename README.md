@@ -38,7 +38,7 @@ Press any key to start the solve...
 ```
 
 # Solving a Puzzle
-```
+```csharp
 Puzzle puzzle = PuzzleBuilder.FromString(PuzzleStrings.Cherries);
 PuzzleSolver solver = new PuzzleSolver();
 solver.SolvePuzzle(puzzle);
