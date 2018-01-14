@@ -6,7 +6,7 @@ I have not referred to any other solvers and I know there are smaller and quicke
 Known rules  are applied to every row and every column, and the entire puzzle is iterated and attempted to be solved as long as changes are made. Once no longer successful, it stops and returns the result formatted in the console window.
 
 
-# Example Puzzle
+# Sample Execution Before
 ```
 ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
 │   │   │   │   │   │   │   │   │   │   │--6
@@ -37,7 +37,15 @@ Known rules  are applied to every row and every column, and the entire puzzle is
 Press any key to start the solve...
 ```
 
-# Example Solution
+# Solving a Puzzle
+```csharp
+Puzzle puzzle = PuzzleBuilder.FromString(PuzzleStrings.Cherries);
+PuzzleSolver solver = new PuzzleSolver();
+solver.SolvePuzzle(puzzle);
+Renderer.Draw(puzzle);
+```
+
+# Sample Execution After
 ```
 ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
 │ x │ x │ x │ x │ █ │ █ │ █ │ █ │ █ │ █ │--6
