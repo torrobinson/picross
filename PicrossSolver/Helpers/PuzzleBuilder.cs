@@ -8,48 +8,11 @@ namespace PicrossSolver.Helpers
     public static class PuzzleBuilder
     {
 
-        public static Puzzle CreateMock()
+        public static Puzzle FromString(string puzzleString)
         {
-            string map =
-                "____######" + Environment.NewLine +
-                "_______#__" + Environment.NewLine +
-                "______##__" + Environment.NewLine +
-                "____##_#__" + Environment.NewLine +
-                "_###___#__" + Environment.NewLine +
-                "#_###_###_" + Environment.NewLine +
-                "######_###" + Environment.NewLine +
-                "##########" + Environment.NewLine +
-                "####_#####" + Environment.NewLine +
-                "______###_";
-
-            //string map =
-            //    "__________" + Environment.NewLine +
-            //    "__________" + Environment.NewLine +
-            //    "__________" + Environment.NewLine +
-            //    "__________" + Environment.NewLine +
-            //    "__________" + Environment.NewLine +
-            //    "__________" + Environment.NewLine +
-            //    "__________" + Environment.NewLine +
-            //    "__________" + Environment.NewLine +
-            //    "__________" + Environment.NewLine +
-            //    "__________";
-
-            //string map =
-            //    "_____#####" + Environment.NewLine +
-            //    "___##_####" + Environment.NewLine +
-            //    "__#____###" + Environment.NewLine +
-            //    "_###_#####" + Environment.NewLine +
-            //    "#######_##" + Environment.NewLine +
-            //    "#____#####" + Environment.NewLine +
-            //    "#_______##" + Environment.NewLine +
-            //    "_#_#_#_#__" + Environment.NewLine +
-            //    "__#####___" + Environment.NewLine +
-            //    "___#______";
-
-
             Puzzle puzzle = new Puzzle();
 
-            foreach (string line in map.Split(new[] { Environment.NewLine },StringSplitOptions.None))
+            foreach (string line in puzzleString.Split(new[] { Environment.NewLine },StringSplitOptions.None))
             {
                 Segment segment = new Segment();
 
