@@ -37,6 +37,13 @@ Known rules  are applied to every row and every column, and the entire puzzle is
 Press any key to start the solve...
 ```
 
+```
+Puzzle puzzle = PuzzleBuilder.FromString(PuzzleStrings.Cherries);
+PuzzleSolver solver = new PuzzleSolver();
+solver.SolvePuzzle(puzzle);
+Renderer.Draw(puzzle);
+```
+
 # Sample Execution After
 ```
 ┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┐
