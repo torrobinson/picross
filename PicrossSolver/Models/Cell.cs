@@ -62,5 +62,12 @@ namespace PicrossSolver.Models
             }
         }
 
+        public static List<Cell> CreateNew(int count = 1) {
+            List<Cell> result = new List<Cell>();
+            for (int i = 0; i < count; i++) {
+                result.Add(new Cell() { isFalse = false, isTrue = false });
+            }
+            return result;
+        }
     }
 }

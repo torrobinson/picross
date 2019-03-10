@@ -33,6 +33,15 @@ namespace PicrossPreview.Puzzles
             "_____ _____" + Environment.NewLine +
             "_____ _____").Replace(" ", String.Empty);
 
+        public static string Beginner => (
+            "#____ __" + Environment.NewLine +
+            "##___ __" + Environment.NewLine +
+            "#__#_ __" + Environment.NewLine +
+            "__### __" + Environment.NewLine +
+            "_#### #_" + Environment.NewLine +
+            "##### ##" + Environment.NewLine +
+            "___#_ __").Replace(" ", String.Empty);
+
         public static string Sword =>
          (
             "_____ _##__ _____" + Environment.NewLine +

@@ -30,14 +30,5 @@ namespace PicrossSolver.Models
             this.MustHaves = new List<Sequence>();
             this.Cells = new List<Cell>();
         }
-
-        public List<Segment> SplitIntoEmptySegments()
-        {
-            List<Segment> segments = new List<Segment>();
-
-            //
-
-            return segments;
-        }
     }
 }

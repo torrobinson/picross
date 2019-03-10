@@ -18,6 +18,9 @@ namespace PicrossPreview
         {
             // Come up with a puzzle to solve
             Puzzle puzzle = PuzzleBuilder.FromString(PuzzleStrings.Cherries);
+            
+            // This one makes a bad assumption somewhere and fails - why?
+            //puzzle = PuzzleBuilder.FromString(PuzzleStrings.Beginner);
 
             // Draw once
             Renderer.Draw(puzzle);
