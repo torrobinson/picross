@@ -16,7 +16,7 @@ namespace PicrossSolver.Solves
         /// <returns>Whether or not any cells were marked/filled</returns>
         public abstract bool Execute(Segment segment);
 
-        protected List<int> TrimStartAndEndFalses(Segment segment, bool onlyTrimIfNoFalses = false)
+        protected KnownStartAndEndFalses TrimStartAndEndFalses(Segment segment, bool onlyTrimIfNoFalses = false)
         {
             if ((segment.Cells.First().IsFalse || segment.Cells.Last().IsFalse) && segment.Cells.Any(cell => cell.IsUnMarked))
             {
@@ -36,25 +36,23 @@ namespace PicrossSolver.Solves
                 ////  there's nothing but free space (or already true cells) between 1-2 known walls
                 if (onlyTrimIfNoFalses && middleSection.Any(cell => cell.IsFalse))
                 {
-                    return new List<int>() { 0, 0 };
+                    return new KnownStartAndEndFalses(0,0);
                 }
                 else
                 {
-                    List<int> startAndEnd = new List<int>() { startWall.Count(), endWall.Count() };
                     segment.Cells = middleSection;
-
-                    return startAndEnd;
+                    return new KnownStartAndEndFalses(startWall.Count(), endWall.Count());
                 }
             }
 
-            return new List<int>() { 0, 0 };
+            return new KnownStartAndEndFalses(0, 0);
         }
 
-        protected void PutStartAndEndBackTogether(List<int> StartAndEnd, Segment MiddleSegment)
+        protected void PutStartAndEndBackTogether(KnownStartAndEndFalses StartAndEnd, Segment MiddleSegment)
         {
-            if (StartAndEnd.First() != 0)
+            if (StartAndEnd.StartIndexFalsesEnd != 0)
             {
-                for (int i = 0; i < StartAndEnd.First(); i++)
+                for (int i = 0; i < StartAndEnd.StartIndexFalsesEnd; i++)
                 {
                     Cell FalseCell = new Cell();
                     FalseCell.MarkFalse();
@@ -62,9 +60,9 @@ namespace PicrossSolver.Solves
                 }
             }
 
-            if (StartAndEnd.Last() != 0)
+            if (StartAndEnd.EndIndexFalsesStart != 0)
             {
-                for (int i = 0; i < StartAndEnd.Last(); i++)
+                for (int i = 0; i < StartAndEnd.EndIndexFalsesStart; i++)
                 {
                     Cell FalseCell = new Cell();
                     FalseCell.MarkFalse();
