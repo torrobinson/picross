@@ -17,7 +17,7 @@ namespace PicrossSolver.Solves
         public override bool Execute(Segment segment)
         {
             if (!segment.HasBlanks) return false;
-            List<int> falseStartAndEndCounts = base.TrimStartAndEndFalses(segment);
+            KnownStartAndEndFalses falseStartAndEndCounts = base.TrimStartAndEndFalses(segment);
 
             bool cellsChanged = false;
             if (segment.TrueCount > 0)

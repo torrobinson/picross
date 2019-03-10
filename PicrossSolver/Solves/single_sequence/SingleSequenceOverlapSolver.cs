@@ -12,7 +12,7 @@ namespace PicrossSolver.Solves
         {
             if (!segment.HasBlanks) return false;
 
-            List<int> falseStartAndEndCounts = base.TrimStartAndEndFalses(segment: segment, onlyTrimIfNoFalses: true);
+            KnownStartAndEndFalses falseStartAndEndCounts = base.TrimStartAndEndFalses(segment: segment, onlyTrimIfNoFalses: true);
 
             bool cellsChanged = false;
 
