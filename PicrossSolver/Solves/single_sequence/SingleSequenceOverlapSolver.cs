@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using PicrossSolver.Models;
+using PicrossSolver.Helpers;
 
 namespace PicrossSolver.Solves
 {
@@ -22,7 +23,14 @@ namespace PicrossSolver.Solves
                 Sequence theSequence = segment.MustHaves.First();
 
                 // Check for overlap
-                int overlapFromMiddle = theSequence.Count - segment.Length / 2;
+                int overlapFromMiddle;
+                if (segment.Length.IsOdd()) {
+                    overlapFromMiddle = theSequence.Count - (segment.Length / 2) - 1;
+                }
+                else {
+                    overlapFromMiddle = theSequence.Count - (segment.Length / 2);
+                }
+
                 if (overlapFromMiddle > 0)
                 {
                     // Work outwards from the middle
@@ -30,7 +38,7 @@ namespace PicrossSolver.Solves
 
                     // If an odd number is needed, mark the middle 
                     bool markedMiddle = false;
-                    if (segment.Length % 2 == 1)
+                    if (segment.Length.IsOdd())
                     {
                         // Mark the middle
                         if (segment.Cells[(segment.Length - 1) / 2].MarkTrue()
@@ -40,13 +48,13 @@ namespace PicrossSolver.Solves
                         markedMiddle = true;
                     }
 
-                    if (!markedMiddle || (markedMiddle && overlapFromMiddle > 1))
+                    if (!markedMiddle || (markedMiddle && overlapFromMiddle >= 1))
                     {
                         // Regardless, move outwards if we have to
                         for (int i = 0; i < overlapFromMiddle; i++)
                         {
                             // When odd, we need to do each side from the middle equally
-                            if (segment.Length % 2 == 1)
+                            if (segment.Length.IsOdd())
                             {
                                 // 2.5-> 1,3 0,4
                                 if (segment.Cells[Convert.ToInt32(Math.Floor(middleIndex)) - (i + 1)].MarkTrue() && !cellsChanged) cellsChanged = true;
