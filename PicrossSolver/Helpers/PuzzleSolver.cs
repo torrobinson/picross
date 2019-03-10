@@ -11,9 +11,12 @@ namespace PicrossSolver.Helpers
     {
         private int unproductiveAttemptNumber = 0;
         private const int UnproductiveAttemptsUntilGiveUp = 50;
+        private bool debugMode = false;
 
-        public void SolvePuzzle(Puzzle puzzle)
+        public void SolvePuzzle(Puzzle puzzle, bool debug)
         {
+            this.debugMode = debug;
+
             unproductiveAttemptNumber = 0;
 
             while (unproductiveAttemptNumber < UnproductiveAttemptsUntilGiveUp)
@@ -22,6 +25,10 @@ namespace PicrossSolver.Helpers
                 foreach (Segment segment in puzzle.Rows.Concat(puzzle.Columns))
                 {
                     anyChanges = SolveSegment(segment) && !anyChanges;
+
+                    if (anyChanges && debugMode) {
+
+                    }
                 }
 
                 if (!anyChanges)
@@ -40,16 +47,22 @@ namespace PicrossSolver.Helpers
 
         public bool SolveSegment(Segment segment)
         {
-            bool cellMarked = false;
-
+            // For every type of solver
             foreach (SegmentSolver solver in SegmentSolvers)
             {
-                if (solver.Execute(segment) && !cellMarked) cellMarked = true;
+                // Increment our segment pass count
                 SolverStats.Instance.SegmentPasses++;
-                if (cellMarked) break;
+
+                // If it made a change
+                if (solver.Execute(segment)) {
+
+                    // Break and return true
+                    return true;
+                }                
             }
 
-            return cellMarked;
+            // Return the fact that nothing was changed
+            return false;
         }
     }
 }

@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PicrossSolver.Models;
+using PicrossSolver.Helpers;
 
-namespace PicrossPreview
+namespace PicrossSolver.UI
 {
     public static class Renderer
     {
