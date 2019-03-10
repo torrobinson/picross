@@ -17,7 +17,7 @@ namespace PicrossSolver.Solves
         public override bool Execute(Segment segment)
         {
             if (!segment.HasBlanks) return false;
-            KnownStartAndEndFalses falseStartAndEndCounts = base.TrimStartAndEndFalses(segment);
+            KnownStartAndEndFalses falseStartAndEndCounts = base.RemoveStartAndEndFalsesFromSegment(segment);
 
             bool cellsChanged = false;
             if (segment.TrueCount > 0)
@@ -43,7 +43,7 @@ namespace PicrossSolver.Solves
                 }
             }
 
-            base.PutStartAndEndBackTogether(falseStartAndEndCounts, segment);
+            base.RecombineFalseStartsAndEndsWithSegment(falseStartAndEndCounts, segment);
             return cellsChanged;
         }
     }
