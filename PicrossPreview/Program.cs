@@ -22,7 +22,7 @@ namespace PicrossPreview
         }
         static void Main(string[] args)
         {
-            bool debug = true;
+            bool debug = false;
 
             // Come up with a puzzle to solve
             Puzzle puzzle = PuzzleBuilder.FromString(PuzzleStrings.Cherries);

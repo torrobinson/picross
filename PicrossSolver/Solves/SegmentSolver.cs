@@ -16,6 +16,8 @@ namespace PicrossSolver.Solves
         /// <returns>Whether or not any cells were marked/filled</returns>
         public abstract bool Execute(Segment segment);
 
+        public string Name => this.GetType().Name;
+
         protected KnownStartAndEndFalses RemoveStartAndEndFalsesFromSegment(Segment segment, bool onlyTrimIfNoFalses = false)
         {
             if ((segment.Cells.First().IsFalse || segment.Cells.Last().IsFalse) && segment.Cells.Any(cell => cell.IsUnMarked))

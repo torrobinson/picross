@@ -36,9 +36,15 @@ namespace PicrossSolver.UI
         /// Draw the puzzle to the console window for previewing
         /// </summary>
         /// <param name="segment"></param>
-        public static void Draw(Puzzle puzzle)
+        public static void Draw(Puzzle puzzle, bool clearFirst = true, string withMessage = "")
         {
-            Console.Clear();
+            if (clearFirst) {
+                Console.Clear();
+            }
+
+            if (withMessage != String.Empty) {
+                Console.WriteLine(withMessage);
+            }
 
             int puzzleWidth = 1 + (puzzle.Columns.Count * (_preCell.Length + 1 + _postCell.Length + _pipe.Length));
             int puzzleHeight = 1 + (puzzle.Rows.Count * 2) + 1;
