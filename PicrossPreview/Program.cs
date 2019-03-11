@@ -25,7 +25,7 @@ namespace PicrossPreview
             bool debug = true;
 
             // Come up with a puzzle to solve
-            Puzzle puzzle = PuzzleBuilder.FromString(PuzzleStrings.Sword);
+            Puzzle puzzle = PuzzleBuilder.FromString(PuzzleStrings.Cherries);
 
             // Draw once
             Renderer.Draw(puzzle);
