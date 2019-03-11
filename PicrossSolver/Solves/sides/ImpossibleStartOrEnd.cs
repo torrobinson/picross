@@ -32,6 +32,7 @@ namespace PicrossSolver.Solves.sides
 
             // End
             segment.Cells.Reverse();
+            segment.MustHaves.Reverse();
             startingUnmarked = segment.Cells.TakeWhile(cell => cell.IsUnMarked).Count();
             if (startingUnmarked < segment.MustHaves.First().Count &&
                 segment.Cells.Skip(startingUnmarked).First().IsFalse)
@@ -42,6 +43,7 @@ namespace PicrossSolver.Solves.sides
                 }
             }
             segment.Cells.Reverse();
+            segment.MustHaves.Reverse();
 
 
             base.RecombineFalseStartsAndEndsWithSegment(falseStartAndEndCounts, segment);

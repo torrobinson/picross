@@ -58,7 +58,7 @@ namespace PicrossPreview.Puzzles
             "_____ #_##_ _____" + Environment.NewLine +
             "_____ #_##_ _____" + Environment.NewLine +
             "_#### ##### ####_" + Environment.NewLine +
-            "##___ ____ #####").Replace(" ", String.Empty);
+            "##___ ____ ######").Replace(" ", String.Empty);
 
         public static string FifteenBlank =>
         (
